@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { ellipsis } from "polished";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 import { dumpCode } from "../utils/dumpCode";
-import { Button } from "./Button.jsx";
+import { Button } from "./Button.js";
 
 const Input = styled.input`
   width: 100%;
@@ -47,14 +47,18 @@ const Inline = styled.div`
   max-width: 100%;
 `;
 
-export function LinkEditor({ fromCode }) {
+export interface LinkEditorProps {
+  fromCode: string;
+}
+
+export function LinkEditor({ fromCode }: LinkEditorProps) {
   const [inputVal, setInputVal] = useState("");
   const [disableAutoPosition, setDisableAutoPosition] = useState(false);
   const [disableDamping, setDisableDamping] = useState(false);
   const [hideGrid, setHideGrid] = useState(false);
   const [expandParametersPanel, setExpandParametersPanel] = useState(false);
 
-  const [compressedCode, setCompressedCode] = useState(null);
+  const [compressedCode, setCompressedCode] = useState<string | null>(null);
 
   useEffect(() => {
     if (!fromCode) return;
@@ -63,8 +67,8 @@ export function LinkEditor({ fromCode }) {
     });
   }, [fromCode]);
 
-  let link = null;
-  let workbenchLink = null;
+  let link: string | undefined = undefined;
+  let workbenchLink: string | null = null;
 
   if (inputVal || compressedCode) {
     const url = new URL(window.location.href);
@@ -77,7 +81,7 @@ export function LinkEditor({ fromCode }) {
       hashParams.set("code", compressedCode);
       url.hash = hashParams.toString();
 
-      const workbenchURL = new URL(window.location);
+      const workbenchURL = new URL(window.location as any);
       workbenchURL.pathname = "/workbench";
       workbenchURL.hash = url.hash;
       workbenchLink = workbenchURL.toString();
@@ -117,7 +121,7 @@ export function LinkEditor({ fromCode }) {
               {workbenchLink}
             </Url>
             <Button
-              onClick={() => navigator.clipboard.writeText(workbenchLink)}
+              onClick={() => navigator.clipboard.writeText(workbenchLink ?? "")}
               solid
               small
             >
@@ -177,7 +181,7 @@ export function LinkEditor({ fromCode }) {
             </Url>
             <Button
               small
-              onClick={() => navigator.clipboard.writeText(link)}
+              onClick={() => navigator.clipboard.writeText(link ?? "")}
               solid
             >
               Copy

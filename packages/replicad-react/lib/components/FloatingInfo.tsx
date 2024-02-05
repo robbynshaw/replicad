@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InfoTopRight = styled.div`
+export const InfoTopRight = styled.div<{ noBg: boolean }>`
   display: flex;
   flex-direction: column;
   position: absolute;

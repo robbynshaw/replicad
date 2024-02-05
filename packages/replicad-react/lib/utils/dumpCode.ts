@@ -1,6 +1,6 @@
 import JSZip from "jszip";
 
-export async function dumpCode(rawCode) {
+export async function dumpCode(rawCode: string) {
   const zip = new JSZip();
   zip.file("code.js", rawCode);
   const content = await zip.generateAsync({

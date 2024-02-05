@@ -51,6 +51,7 @@
     "react-use-rect": "^2.0.4",
     "replicad": "^0.15.3",
     "replicad-opencascadejs": "^0.15.2",
+    "replicad-react": "workspace:^",
     "replicad-threejs-helper": "^0.15.2",
     "styled-components": "^5.3.0",
     "three": "^0.155.0",

@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const Button = styled.button<{
+  width?: number;
+  icon?: boolean;
+  solid?: boolean;
+  outlined?: boolean;
+  small?: boolean;
+}>`
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { InfoTopLeft } from "./FloatingInfo.jsx";
-import { Button } from "./Button.jsx";
+import { Button } from "./Button.js";
+import { InfoTopLeft } from "./FloatingInfo.js";
 
-export const InfoMenu = styled(InfoTopLeft)`
+export const InfoMenu = styled(InfoTopLeft)<{ hide: boolean }>`
   & > * {
     flex-shrink: 0;
   }

@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useCallback } from "react";
-import styled from "styled-components";
-import { Portal } from "react-portal";
 import { ellipsis } from "polished";
+import React, { ReactNode, useCallback, useEffect, useRef } from "react";
+import { Portal } from "react-portal";
+import styled from "styled-components";
 
-const useOnKeypress = (fcn, keypress = "Escape") => {
+const useOnKeypress = (fcn: any, keypress = "Escape") => {
   const actionFcn = useRef(fcn);
   useEffect(() => {
     actionFcn.current = fcn;
   }, [fcn]);
 
   const escFunction = useCallback(
-    (event) => {
+    (event: any) => {
       if (event.key === keypress) {
         actionFcn.current && actionFcn.current();
       }
@@ -87,11 +87,16 @@ const DialogLayout = styled.div`
   }
 `;
 
+interface DialogProps {
+  children: ReactNode[];
+  onClose: any;
+}
+
 export const Dialog = React.memo(function Dialog({
   children,
   onClose,
   ...props
-}) {
+}: DialogProps) {
   useOnKeypress(onClose, "Escape");
 
   return (
@@ -158,7 +163,7 @@ export const DialogTitle = React.memo(function DialogTitle({
   children,
   onClose,
   ...props
-}) {
+}: DialogProps) {
   return (
     <TitleBar {...props}>
       {children}
