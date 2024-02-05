@@ -1,0 +1,21 @@
+// See https://go.microsoft.com/fwlink/?LinkId=733558
+// for the documentation about the tasks.json format
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "options": {
+        "cwd": "${workspaceFolder}/packages/replicad-viewer-vscode"
+      },
+      "type": "typescript",
+      "tsconfig": "packages/replicad-viewer-vscode/tsconfig.json",
+      "option": "watch",
+      "problemMatcher": ["$tsc-watch"],
+      "label": "Build:Watch VSCode Extension",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
