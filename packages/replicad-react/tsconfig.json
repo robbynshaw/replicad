@@ -15,11 +15,11 @@
     "jsx": "react-jsx",
 
     /* Linting */
-    "strict": true,
+    "strict": false,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["lib"],
+  "include": ["lib", "../studio/src/visualiser", "../studio/src/viewers"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

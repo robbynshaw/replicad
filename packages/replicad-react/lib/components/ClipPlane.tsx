@@ -1,7 +1,6 @@
+import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-
-import { useFrame } from "@react-three/fiber";
 
 const forwardVector = new THREE.Vector3(0, 0, -1);
 
@@ -53,7 +52,8 @@ function initStencilMaterials(sideColor = "yellow") {
 
 export default function ClipPlane({ clippingPlane, sideColor, children }) {
   const groupRef = useRef(null);
-  const planeMeshRef = useRef();
+  const planeMeshRef =
+    useRef<THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>>();
 
   useEffect(() => {
     const group = groupRef.current;

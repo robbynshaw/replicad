@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { renderToString } from "react-dom/server";
 
-import styled from "styled-components";
 import { fileSave } from "browser-fs-access";
+import styled from "styled-components";
 
-import { Button, ButtonBar } from "../../components/Button";
+import {
+  Button,
+  ButtonBar,
+} from "../../../../replicad-react/lib/components/Button.js";
 import {
   Dialog,
-  DialogTitle,
   DialogBody,
   DialogButtons,
-} from "../../components/Dialog.jsx";
+  DialogTitle,
+} from "../../../../replicad-react/lib/components/Dialog.js";
 
 import saveShape from "../../utils/saveShape";
-import useEditorStore from "./useEditorStore";
-import SVGViewer from "../../viewers/SVGViewer";
+import SVGViewer from "../../viewers/SVGViewer.jsx";
+import useEditorStore from "./useEditorStore.jsx";
 
 const Choices = styled.div`
   display: flex;

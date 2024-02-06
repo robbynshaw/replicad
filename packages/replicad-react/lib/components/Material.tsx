@@ -1,4 +1,3 @@
-import React from "react";
 import { useTexture } from "@react-three/drei";
 
 export default function Material(props) {

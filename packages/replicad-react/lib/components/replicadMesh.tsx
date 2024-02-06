@@ -1,13 +1,13 @@
-import React, { useLayoutEffect, useMemo, useRef, useEffect } from "react";
-import { BufferGeometry } from "three";
 import { useThree } from "@react-three/fiber";
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import {
-  highlightInGeometry,
-  syncLines,
-  syncFaces,
-  getFaceIndex,
   getEdgeIndex,
+  getFaceIndex,
+  highlightInGeometry,
+  syncFaces,
+  syncLines,
 } from "replicad-threejs-helper";
+import { BufferGeometry } from "three";
 
 export const useApplyHighlights = (geometry, highlight) => {
   const { invalidate } = useThree();

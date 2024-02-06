@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
 import { Canvas as ThreeCanvas } from "@react-three/fiber";
+import { Suspense } from "react";
 import styled from "styled-components";
-import LoadingScreen from "../components/LoadingScreen.jsx";
+import LoadingScreen from "./LoadingScreen.js";
 
 const StyledCanvas = styled(ThreeCanvas)`
   width: 100%;

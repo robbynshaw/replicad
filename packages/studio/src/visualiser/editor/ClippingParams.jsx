@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { ParamsSection, LabelledBlock } from "../../components/ToolUI";
+import {
+  LabelledBlock,
+  ParamsSection,
+} from "../../../../replicad-react/lib/components/ToolUI";
 
 import useEditorStore from "./useEditorStore";
 

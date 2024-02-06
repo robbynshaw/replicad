@@ -1,6 +1,7 @@
 import { Button } from "./components/Button";
 import { ContextButton, InfoMenu } from "./components/ButtonMenu";
 import { Dialog } from "./components/Dialog";
+import { EditorViewer } from "./components/EditorViewer";
 import ErrorBoundary from "./components/ErrorBoundary";
 import {
   InfoBottomLeft,
@@ -10,17 +11,18 @@ import {
 } from "./components/FloatingInfo";
 import { LinkEditor } from "./components/LinkEditor";
 import LoadingScreen from "./components/LoadingScreen";
-import Toolbar from "./components/Toolbar";
 import {
   LabelledBlock,
   LabelledBlockWrapper,
   ParamsSection,
 } from "./components/ToolUI";
+import Toolbar from "./components/Toolbar";
 
 export {
   Button,
   ContextButton,
   Dialog,
+  EditorViewer,
   ErrorBoundary,
   InfoBottomLeft,
   InfoBottomRight,

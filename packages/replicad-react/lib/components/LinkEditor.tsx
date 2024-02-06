@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { dumpCode } from "../utils/dumpCode";
-import { Button } from "./Button.js";
+import { Button } from "./Button";
 
 const Input = styled.input`
   width: 100%;

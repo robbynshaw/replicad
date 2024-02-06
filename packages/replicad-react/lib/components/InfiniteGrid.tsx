@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import * as THREE from "three";
 import { Plane } from "@react-three/drei";
+import { useRef } from "react";
+import * as THREE from "three";
 //
 //
 // Author: Fyrestar https://mevedia.com (https://github.com/Fyrestar/THREE.InfiniteGridHelper)

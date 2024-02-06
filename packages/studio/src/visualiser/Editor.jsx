@@ -1,32 +1,37 @@
-import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { Button, ButtonBar } from "../components/Button.jsx";
+import {
+  Button,
+  ButtonBar,
+} from "../../../replicad-react/lib/components/Button.js";
 import {
   InfoBottomLeft,
   InfoTopRight as InfoTopRightRaw,
-} from "../components/FloatingInfo.jsx";
-import LoadingScreen from "../components/LoadingScreen.jsx";
+} from "../../../replicad-react/lib/components/FloatingInfo.js";
+import LoadingScreen from "../../../replicad-react/lib/components/LoadingScreen.js";
 
-import Download from "../icons/Download.jsx";
-import Configure from "../icons/Configure.jsx";
-import Reload from "../icons/Reload.jsx";
 import Clipping from "../icons/Clipping.jsx";
+import Configure from "../icons/Configure.jsx";
+import Download from "../icons/Download.jsx";
+import Reload from "../icons/Reload.jsx";
 
 import EditorViewer from "../viewers/EditorViewer.jsx";
 
-import Toolbar from "../components/Toolbar.jsx";
+import Toolbar from "../../../replicad-react/lib/components/Toolbar.js";
 
-import ParamsEditor from "./editor/ParamsEditor.jsx";
 import ClippingParams from "./editor/ClippingParams.jsx";
 import DownloadDialog from "./editor/DownloadDialog.jsx";
-import useEditorStore, { EditorContextProvider } from "./editor/useEditorStore";
+import ParamsEditor from "./editor/ParamsEditor.jsx";
+import useEditorStore, {
+  EditorContextProvider,
+} from "./editor/useEditorStore.jsx";
 
 import {
+  getSavedHandleName,
   loadFile,
   requestFile,
-  getSavedHandleName,
 } from "../utils/diskFileAccess.js";
 
 const InfoTopRight = styled(InfoTopRightRaw)`

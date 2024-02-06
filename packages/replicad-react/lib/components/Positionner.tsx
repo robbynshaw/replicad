@@ -1,21 +1,21 @@
-import React, {
+import {
   createContext,
-  useContext,
-  useRef,
-  useMemo,
   useCallback,
+  useContext,
   useLayoutEffect,
+  useMemo,
+  useRef,
 } from "react";
 
-import { Box3, Vector3 } from "three";
 import { useThree } from "@react-three/fiber";
+import { Box3, Vector3 } from "three";
 
 const DEFAULT_PADDING = 5;
 
 const positionContext = createContext({
-  registerBox: () => null,
-  unregisterBox: () => null,
-  refreshPositions: () => null,
+  registerBox: (group: any) => {},
+  unregisterBox: (group: any) => {},
+  refreshPositions: () => {},
 });
 
 export function Positionner({ children }) {

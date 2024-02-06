@@ -1,6 +1,6 @@
-import api from "../../utils/builderAPI";
 import { autorun } from "mobx";
-import { types, getRoot, flow } from "mobx-state-tree";
+import { flow, getRoot, types } from "mobx-state-tree";
+import api from "../../utils/builderAPI";
 
 const FaceInfo = types.model("FaceInfo", {
   type: types.string,

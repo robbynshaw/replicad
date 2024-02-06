@@ -1,15 +1,14 @@
-import React, { useState, useMemo } from "react";
-import { lighten, darken, complement } from "polished";
-import { Plane } from "three";
-
-import { Positionner, Box } from "./Positionner.jsx";
-import ClipPlane from "./ClipPlane.jsx";
+import { complement, darken, lighten } from "polished";
+import React, { useMemo, useState } from "react";
+import { Plane, Vector3Tuple } from "three";
+import ClipPlane from "./ClipPlane";
+import { Box, Positionner } from "./Positionner";
 import {
-  useWrappedFaceEvent,
-  useWrappedEdgeEvent,
-  ReplicadFacesMesh,
   ReplicadEdgesMesh,
-} from "./replicadMesh.jsx";
+  ReplicadFacesMesh,
+  useWrappedEdgeEvent,
+  useWrappedFaceEvent,
+} from "./replicadMesh";
 
 const colorVariants = (baseColor = "#5a8296") => {
   return {
@@ -21,6 +20,19 @@ const colorVariants = (baseColor = "#5a8296") => {
   };
 };
 
+interface Props {
+  shape: any;
+  onFaceClick?: any;
+  onEdgeClick?: any;
+  facesHighlight?: any;
+  edgesHighlight?: any;
+  LineMaterial?: any;
+  FaceMaterial: any;
+  clipDirection?: Vector3Tuple;
+  clipConstant?: number;
+  baseColor?: string;
+}
+
 const ShapeGeometry = ({
   shape,
   onFaceClick,
@@ -31,7 +43,7 @@ const ShapeGeometry = ({
   FaceMaterial = "meshBasicMaterial",
   clipDirection = null,
   clipConstant = 0,
-}) => {
+}: Props) => {
   const fOnClick = useWrappedFaceEvent(onFaceClick);
   const eOnClick = useWrappedEdgeEvent(onEdgeClick);
 

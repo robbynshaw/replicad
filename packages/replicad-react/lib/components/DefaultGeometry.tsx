@@ -1,6 +1,6 @@
-import React, { useRef, useLayoutEffect } from "react";
-import { Sphere, MeshDistortMaterial } from "@react-three/drei";
+import { MeshDistortMaterial, Sphere } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
+import { useLayoutEffect, useRef } from "react";
 
 export default function DefaultGeometry() {
   const camera = useThree((state) => state.camera);

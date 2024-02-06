@@ -1,10 +1,10 @@
-import { types, flow, getSnapshot } from "mobx-state-tree";
 import { autorun } from "mobx";
+import { flow, getSnapshot, types } from "mobx-state-tree";
 
 import api from "../../utils/builderAPI";
-import UIState from "./ui-state";
 import CodeState from "./code-state";
 import SelectedInfo from "./selected-info";
+import UIState from "./ui-state";
 
 import codeInit from "./codeInit";
 
