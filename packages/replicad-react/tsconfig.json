@@ -20,6 +20,6 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["lib", "../studio/src/visualiser", "../studio/src/viewers"],
+  "include": ["lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
