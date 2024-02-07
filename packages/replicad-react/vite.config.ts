@@ -14,15 +14,11 @@ export default defineConfig({
       // the proper extensions will be added
       fileName: "replicad-react",
     },
+    sourcemap: true,
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: [
-        "react",
-        "react/jsx-runtime",
-        "react-dom",
-        "styled-components",
-      ],
+      external: ["react", "react-dom", "styled-components", "three"],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
@@ -30,6 +26,7 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
           "styled-components": "styled",
+          three: "THREE",
         },
       },
     },

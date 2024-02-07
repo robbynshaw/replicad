@@ -62,6 +62,15 @@ const useClickHighlight = (selectMode, onSelected) => {
   };
 };
 
+export interface EditorViewerProps {
+  shape: any;
+  hasError?: boolean;
+  selectMode?: string;
+  onSelected?: any;
+  clipDirection?: any;
+  clipConstant?: any;
+}
+
 export function EditorViewer({
   shape,
   hasError,
@@ -69,7 +78,7 @@ export function EditorViewer({
   onSelected,
   clipDirection,
   clipConstant,
-}) {
+}: EditorViewerProps) {
   const { updateEdgeSelected, updateFaceSelected, faceSelected, edgeSelected } =
     useClickHighlight(selectMode, onSelected);
 

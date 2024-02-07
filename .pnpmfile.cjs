@@ -1,6 +1,11 @@
 const readPackage = (pkg, context) => {
   if (pkg.peerDependencies) {
-    for (const skipName of ["react", "react-dom", "styled-components"]) {
+    for (const skipName of [
+      "react",
+      "react-dom",
+      "styled-components",
+      "three",
+    ]) {
       if (pkg.peerDependencies[skipName])
         // fixes react error "Error: Invalid hook call."
         // with multiple copy of react in the node_modules folder
