@@ -1,4 +1,4 @@
-import { Button, EditorViewer } from "replicad-react";
+import { Button } from "replicad-react";
 import "./App.css";
 
 function App() {
@@ -8,7 +8,8 @@ function App() {
       <Button width="500px" outlined={true} solid={true}>
         Hello world
       </Button>
-      <EditorViewer />
+
+      {/* <EditorViewer /> */}
     </>
   );
 }

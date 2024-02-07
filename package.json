@@ -14,5 +14,8 @@
     "eslint": "^8.1.0",
     "lerna": "7.1.5",
     "prettier": "^2.4.1"
+  },
+  "resolutions": {
+    "babel-plugin-styled-components": "1.13.3"
   }
 }
