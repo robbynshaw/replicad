@@ -14,32 +14,24 @@ declare global {
 export interface ShapeInterface {
   name: string;
   shape: replicad.AnyShape;
-  color: string;
-  strokeType: string;
-  opacity: string;
-  highlight?: replicad.AnyShape[];
-  highlightEdge: (finder: replicad.EdgeFinder) => void;
-  highlightFace: (finder: replicad.FaceFinder) => void;
+  color?: string;
+  strokeType?: string;
+  opacity?: string;
+  format?: string;
+  paths?: string[] | string[][];
+  viewbox?: string;
+  mesh?: replicad.ShapeMesh;
+  edges?: replicad.MeshExport;
+  highlight?: replicad.AnyShape[] | number[];
+  highlightEdge?: (finder: replicad.EdgeFinder) => void;
+  highlightFace?: (finder: replicad.FaceFinder) => void;
+  error?: boolean;
 }
 
 export interface ErrorResult {
   error: boolean;
   message: string;
   stack: string;
-}
-
-interface ShapeInfo {
-  name: string;
-  color: string;
-  strokeType: string;
-  opacity: string;
-  format?: string;
-  paths?: string[] | string[][];
-  viewbox?: string;
-  mesh?: replicad.ShapeMesh;
-  edges?: replicad.MeshExport;
-  error?: boolean;
-  highlight?: number;
 }
 
 interface ShapesMemory {
@@ -161,7 +153,7 @@ const organiseReturnValue = (
   });
 };
 
-const buildShapesFromCode = async (
+export const buildShapesFromCode = async (
   code: string,
   params: any
 ): Promise<ShapeInterface[] | ErrorResult> => {
@@ -190,8 +182,7 @@ const buildShapesFromCode = async (
 
   return shapes
     .filter(
-      ({ shape }: { shape: replicad.AnyShape }) =>
-        !(shape instanceof replicad.Drawing) || shape.innerShape
+      ({ shape }) => !(shape instanceof replicad.Drawing) || shape.innerShape
     )
     .map(
       ({
@@ -209,7 +200,13 @@ const buildShapesFromCode = async (
           (highlightEdge && highlightEdge(new replicad.EdgeFinder())) ||
           (highlightFace && highlightFace(new replicad.FaceFinder()));
 
-        const shapeInfo: ShapeInfo = { name, color, strokeType, opacity };
+        const shapeInfo: ShapeInterface = {
+          name,
+          shape,
+          color,
+          strokeType,
+          opacity,
+        };
 
         if (isBlueprintLike(shape)) {
           shapeInfo.format = "svg";
@@ -229,15 +226,16 @@ const buildShapesFromCode = async (
           return shapeInfo;
         }
 
-        if (highlight)
+        if (highlight) {
           try {
+            // TODO
             // shapeInfo.highlight = highlight?.find(shape).map((s) => {
-            const result = highlight?.find(shape).map((s) => {
-              return s.hashCode;
-            });
+            //   return s.hashCode;
+            // });
           } catch (e) {
             console.error(e);
           }
+        }
 
         return shapeInfo;
       }

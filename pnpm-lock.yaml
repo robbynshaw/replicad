@@ -459,6 +459,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0
+      replicad:
+        specifier: workspace:^0.15.3
+        version: link:../replicad
       replicad-opencascadejs:
         specifier: workspace:^0.15.2
         version: link:../replicad-opencascadejs

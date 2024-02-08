@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "replicad": "workspace:^0.15.3",
     "replicad-opencascadejs": "workspace:^0.15.2",
     "replicad-react": "workspace:^",
     "styled-components": "^6.1.8",
