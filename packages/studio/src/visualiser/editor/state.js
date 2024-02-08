@@ -78,10 +78,12 @@ const AppState = types
       self.ui.deHighlight();
       self.processing = true;
       try {
+        console.log("Building shape from code");
         const mesh = yield api.buildShapesFromCode(
           self.currentValues.code,
           params
         );
+        console.log("MESH", mesh);
 
         if (mesh.error) {
           self.error = mesh;

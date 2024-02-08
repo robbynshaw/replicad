@@ -1,3 +1,4 @@
+import { BuilderWorkerServiceFactory } from "./api/builder.worker";
 import { Button, ButtonBar, ButtonIcon } from "./components/Button";
 import { ContextButton, InfoMenu } from "./components/ButtonMenu";
 import Canvas from "./components/Canvas";
@@ -31,6 +32,7 @@ import {
 import Toolbar from "./components/Toolbar";
 
 export {
+  BuilderWorkerServiceFactory,
   Button,
   ButtonBar,
   ButtonIcon,

@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import { EditorViewer } from "replicad-react";
 import "./App.css";
-import {
-  ErrorResult,
-  ShapeInterface,
-  buildShapesFromCode,
-} from "./api/builder.worker";
+import api from "./builder.worker";
 
 function App() {
-  const [shape, setShape] = useState<ShapeInterface[] | ErrorResult>([]);
+  // const [shape, setShape] = useState<ShapeInterface[] | ErrorResult>([]);
+  const [shape, setShape] = useState([]);
 
   const code = `const { drawEllipse } = replicad;
   const main = () => {
@@ -16,7 +13,7 @@ function App() {
   };`;
   useEffect(() => {
     const exec = async () => {
-      const result = await buildShapesFromCode(code, null);
+      const result = await api.buildShapesFromCode(code, null);
       setShape(result);
     };
     exec();
