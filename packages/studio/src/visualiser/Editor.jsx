@@ -5,12 +5,11 @@ import styled from "styled-components";
 import {
   Button,
   ButtonBar,
-} from "../../../replicad-react/lib/components/Button.js";
-import {
   InfoBottomLeft,
   InfoTopRight as InfoTopRightRaw,
-} from "../../../replicad-react/lib/components/FloatingInfo.js";
-import LoadingScreen from "../../../replicad-react/lib/components/LoadingScreen.js";
+  LoadingScreen,
+  Toolbar,
+} from "replicad-react";
 
 import Clipping from "../icons/Clipping.jsx";
 import Configure from "../icons/Configure.jsx";
@@ -18,8 +17,6 @@ import Download from "../icons/Download.jsx";
 import Reload from "../icons/Reload.jsx";
 
 import EditorViewer from "../viewers/EditorViewer.jsx";
-
-import Toolbar from "../../../replicad-react/lib/components/Toolbar.js";
 
 import ClippingParams from "./editor/ClippingParams.jsx";
 import DownloadDialog from "./editor/DownloadDialog.jsx";

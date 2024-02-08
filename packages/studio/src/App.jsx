@@ -1,14 +1,14 @@
 import "replicad-opencascadejs/src/replicad_single.wasm?url";
 
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
+import LinkWidget, { MakeLink } from "./LinkWidget.jsx";
 import Welcome from "./Welcome.jsx";
 import Editor from "./visualiser/Editor.jsx";
-import LinkWidget, { MakeLink } from "./LinkWidget.jsx";
 
+import { LoadingScreen } from "replicad-react";
 import ReloadPrompt from "./ReloadPrompt.jsx";
-import LoadingScreen from "./components/LoadingScreen.jsx";
 
 const Workbench = React.lazy(() => import("./workbench/Workbench.jsx"));
 

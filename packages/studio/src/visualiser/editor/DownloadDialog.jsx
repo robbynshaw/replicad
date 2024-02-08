@@ -7,16 +7,14 @@ import styled from "styled-components";
 import {
   Button,
   ButtonBar,
-} from "../../../../replicad-react/lib/components/Button.js";
-import {
   Dialog,
   DialogBody,
   DialogButtons,
   DialogTitle,
-} from "../../../../replicad-react/lib/components/Dialog.js";
+  SVGViewer,
+} from "replicad-react";
 
 import saveShape from "../../utils/saveShape";
-import SVGViewer from "../../viewers/SVGViewer.jsx";
 import useEditorStore from "./useEditorStore.jsx";
 
 const Choices = styled.div`

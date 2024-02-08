@@ -1,27 +1,29 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { useLocation, useHistory } from "react-router-dom";
 
-import { useControls, levaStore, Leva } from "leva";
+import { Leva, levaStore, useControls } from "leva";
 
-import Download from "../icons/Download.jsx";
 import Configure from "../icons/Configure.jsx";
+import Download from "../icons/Download.jsx";
 import Focus from "../icons/Focus.jsx";
-import NewWindow from "../icons/NewWindow.jsx";
 import Loading from "../icons/Loading.jsx";
+import NewWindow from "../icons/NewWindow.jsx";
 
-import { InfoMenu, ContextButton } from "./ButtonMenu.jsx";
-import LoadingScreen from "./LoadingScreen.jsx";
-import { InfoBottomLeft } from "./FloatingInfo.jsx";
-
-import PresentationViewer from "../viewers/PresentationViewer.jsx";
+import {
+  ContextButton,
+  InfoBottomLeft,
+  InfoMenu,
+  LoadingScreen,
+} from "replicad-react";
 import NicePresentationViewer from "../viewers/NicePresentationViewer.jsx";
+import PresentationViewer from "../viewers/PresentationViewer.jsx";
 
 const LoadingInfo = styled(InfoBottomLeft)`
   color: var(--color-primary-light);
 `;
 
-const AutoConfig = ({ updateParams, defaultParams, hidden, collapsed}) => {
+const AutoConfig = ({ updateParams, defaultParams, hidden, collapsed }) => {
   const [params] = useControls(() => defaultParams);
   const paramsUpdater = useRef(updateParams);
 
@@ -57,8 +59,8 @@ const AutoConfig = ({ updateParams, defaultParams, hidden, collapsed}) => {
         },
         sizes: {
           rootWidth: "250px",
-          controlWidth: "80px"
-        }
+          controlWidth: "80px",
+        },
       }}
     />
   );

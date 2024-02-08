@@ -1,23 +1,27 @@
+import Editor from "@monaco-editor/react";
+import { observer } from "mobx-react";
 import React from "react";
 import styled from "styled-components";
-import { observer } from "mobx-react";
-import Editor from "@monaco-editor/react";
 
 import replicadTypes from "../../node_modules/replicad/dist/replicad.d.ts?raw";
 
 import Splitter, { GutterTheme, SplitDirection } from "@devbookhq/splitter";
 
-import useEditorStore from "../visualiser/editor/useEditorStore";
-import downloadCode from "../utils/downloadCode";
-import { HeaderButton } from "./panes";
+import {
+  Dialog,
+  DialogBody,
+  DialogTitle,
+  LinkEditor,
+  LoadingScreen,
+} from "replicad-react";
 import Download from "../icons/Download";
 import Share from "../icons/Share";
-import LoadingScreen from "../components/LoadingScreen";
-import { LinkEditor } from "../components/LinkEditor";
+import downloadCode from "../utils/downloadCode";
+import useEditorStore from "../visualiser/editor/useEditorStore";
+import { HeaderButton } from "./panes";
 
-import { Dialog, DialogTitle, DialogBody } from "../components/Dialog.jsx";
-import { useAutoload } from "./Autoload";
 import Reload from "../icons/Reload";
+import { useAutoload } from "./Autoload";
 
 export const ErrorOverlay = styled.div`
   padding: 2em;

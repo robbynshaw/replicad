@@ -1,22 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
-import Configure from "../icons/Configure";
+import { InfoBottomLeft, InfoTopRight, LoadingScreen } from "replicad-react";
 import Clipping from "../icons/Clipping";
+import Configure from "../icons/Configure";
 import Download from "../icons/Download";
-import ClippingParams from "../visualiser/editor/ClippingParams";
-import { FaceInfo, EdgeInfo } from "../visualiser/editor/HighlighedInfo.jsx";
-import { InfoBottomLeft, InfoTopRight } from "../components/FloatingInfo";
-import DownloadDialog from "../visualiser/editor/DownloadDialog";
-import ParamsEditor from "../visualiser/editor/ParamsEditor";
-import LoadingScreen from "../components/LoadingScreen";
 import EditorViewer from "../viewers/EditorViewer";
+import ClippingParams from "../visualiser/editor/ClippingParams";
+import DownloadDialog from "../visualiser/editor/DownloadDialog";
+import { EdgeInfo, FaceInfo } from "../visualiser/editor/HighlighedInfo.jsx";
+import ParamsEditor from "../visualiser/editor/ParamsEditor";
 
 import { observer } from "mobx-react";
 
+import Loading from "../icons/Loading";
 import useEditorStore from "../visualiser/editor/useEditorStore";
 import { HeaderButton, HeaderSelect } from "./panes";
-import Loading from "../icons/Loading";
 
 const Spacer = styled.div`
   flex: 1;
@@ -44,7 +43,10 @@ export const VisualizerButtons = observer(() => {
         </>
       ) : null}
 
-      <HeaderButton onClick={() => store.ui.changeDownload(true)} title="Download">
+      <HeaderButton
+        onClick={() => store.ui.changeDownload(true)}
+        title="Download"
+      >
         <Download />
       </HeaderButton>
       {!store.ui.currentIsSVG && (

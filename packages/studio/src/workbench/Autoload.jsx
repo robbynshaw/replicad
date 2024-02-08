@@ -1,12 +1,11 @@
 import React, { useCallback } from "react";
 import styled from "styled-components";
 
-import { Button } from "../components/Button";
-import { clearFileSave, loadFile, requestFile } from "../utils/diskFileAccess";
-import Reload from "../icons/Reload";
-import useEditorStore from "../visualiser/editor/useEditorStore";
 import { observer } from "mobx-react";
-import { InfoBottomLeft } from "../components/FloatingInfo";
+import { Button, InfoBottomLeft } from "replicad-react";
+import Reload from "../icons/Reload";
+import { clearFileSave, loadFile, requestFile } from "../utils/diskFileAccess";
+import useEditorStore from "../visualiser/editor/useEditorStore";
 
 export const useAutoload = () => {
   const store = useEditorStore();

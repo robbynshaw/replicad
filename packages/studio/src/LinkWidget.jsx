@@ -1,15 +1,15 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import styled from "styled-components";
-import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
 
 import builderAPI from "./utils/builderAPI";
 import loadCode from "./utils/loadCode";
 import saveShape from "./utils/saveShape";
 
+import { LinkEditor } from "replicad-react";
 import StandardUI from "./components/StandardUI.jsx";
-import { LinkEditor } from "./components/LinkEditor.jsx";
 
 const CenterInfo = styled.div`
   background-color: var(--bg-color);

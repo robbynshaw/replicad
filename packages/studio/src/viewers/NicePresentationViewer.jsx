@@ -1,10 +1,11 @@
 import React from "react";
 
-import Canvas from "./Canvas.jsx";
-
-import Controls from "../Controls.jsx";
-import { ShapeGeometries } from "../ShapeGeometry.jsx";
-import DefaultGeometry from "../DefaultGeometry.jsx";
+import {
+  Canvas,
+  Controls,
+  DefaultGeometry,
+  ShapeGeometries,
+} from "replicad-react";
 
 const PrettyMaterial = ({ ...props }) => {
   return <meshStandardMaterial {...props} color="#B4D4E4" metalness={0.5} />;

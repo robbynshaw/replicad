@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { ErrorBoundary } from "replicad-react";
 import styled from "styled-components";
-import ErrorBoundary from "../components/ErrorBoundary";
 import Fullscreen from "../icons/Fullscreen";
 
 const fullScreenStyle = ` 
