@@ -1,4 +1,17 @@
 import {
+  Blueprint,
+  Blueprints,
+  cut2D,
+  DrawingInterface,
+  fuse2D,
+  intersect2D,
+  polysidesBlueprint,
+  roundedRectangleBlueprint,
+  ScaleMode,
+  Shape2D,
+} from "./blueprints";
+import { Plane, PlaneName, Point } from "./geom";
+import {
   BoundingBox2d,
   make2dCircle,
   make2dEllipse,
@@ -6,36 +19,23 @@ import {
   Point2D,
   stitchCurves,
 } from "./lib2d";
-import {
-  Blueprint,
-  cut2D,
-  intersect2D,
-  DrawingInterface,
-  fuse2D,
-  polysidesBlueprint,
-  roundedRectangleBlueprint,
-  ScaleMode,
-  Shape2D,
-  Blueprints,
-} from "./blueprints";
-import { Plane, PlaneName, Point } from "./geom";
+import { makeProjectedEdges } from "./projection/makeProjectedEdges";
+import type { ProjectionPlane } from "./projection/ProjectionCamera";
+import { lookFromPlane, ProjectionCamera } from "./projection/ProjectionCamera";
 import type { AnyShape, Edge, Face } from "./shapes";
 import { BaseSketcher2d } from "./Sketcher2d";
-import type { SketchInterface, Sketches, Sketch } from "./sketches";
 import type { GenericSketcher } from "./sketcherlib";
+import type { Sketch, Sketches, SketchInterface } from "./sketches";
 import { textBlueprints } from "./text";
-import { lookFromPlane, ProjectionCamera } from "./projection/ProjectionCamera";
-import type { ProjectionPlane } from "./projection/ProjectionCamera";
-import { makeProjectedEdges } from "./projection/makeProjectedEdges";
 
+import { chamfer2D, fillet2D } from "./blueprints/customCorners";
 import offset from "./blueprints/offset";
-import { CornerFinder } from "./finders/cornerFinder";
-import { fillet2D, chamfer2D } from "./blueprints/customCorners";
 import { edgeToCurve } from "./curves";
+import { CornerFinder } from "./finders/cornerFinder";
 import { BSplineApproximationConfig } from "./shapeHelpers";
 
 export class Drawing implements DrawingInterface {
-  private innerShape: Shape2D;
+  public innerShape: Shape2D;
 
   constructor(innerShape: Shape2D = null) {
     this.innerShape = innerShape;

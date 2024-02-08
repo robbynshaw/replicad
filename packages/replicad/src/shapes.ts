@@ -1,30 +1,30 @@
-import { WrappingObj, GCWithScope } from "./register.js";
-import { Vector, Point, Plane, PlaneName, asPnt, BoundingBox } from "./geom.js";
 import { HASH_CODE_MAX } from "./constants.js";
+import { BoundingBox, Plane, PlaneName, Point, Vector, asPnt } from "./geom.js";
 import { getOC } from "./oclib.js";
+import { GCWithScope, WrappingObj } from "./register.js";
 
 import {
+  Adaptor3d_Surface,
+  BRepAdaptor_CompCurve,
+  BRepAdaptor_Curve,
+  BRepAdaptor_Surface,
+  STEPControl_StepModelType,
+  TopAbs_ShapeEnum,
+  TopoDS_CompSolid,
+  TopoDS_Compound,
+  TopoDS_Edge,
   TopoDS_Face,
   TopoDS_Shape,
-  TopoDS_Edge,
-  TopoDS_Wire,
   TopoDS_Shell,
-  TopoDS_Vertex,
   TopoDS_Solid,
-  TopoDS_Compound,
-  TopoDS_CompSolid,
-  TopAbs_ShapeEnum,
-  STEPControl_StepModelType,
-  gp_Vec,
+  TopoDS_Vertex,
+  TopoDS_Wire,
   gp_Pnt,
-  Adaptor3d_Surface,
-  BRepAdaptor_Curve,
-  BRepAdaptor_CompCurve,
-  BRepAdaptor_Surface,
+  gp_Vec,
 } from "replicad-opencascadejs";
-import { EdgeFinder, FaceFinder } from "./finders/index.js";
-import { rotate, translate, mirror, scale as scaleShape } from "./geomHelpers";
 import { CurveType, findCurveType } from "./definitionMaps";
+import { EdgeFinder, FaceFinder } from "./finders/index.js";
+import { mirror, rotate, scale as scaleShape, translate } from "./geomHelpers";
 
 export type { CurveType };
 
@@ -70,6 +70,23 @@ export interface CurveLike {
   LastParameter(): number;
   GetType?(): any;
   D1(v: number, p: gp_Pnt, vPrime: gp_Vec): void;
+}
+
+export interface MeshExportOptions {
+  tolerance?: number;
+  angularTolerance?: number;
+  keepMesh?: boolean;
+}
+
+export interface EdgeGroup {
+  start: number;
+  count: number;
+  edgeId: number;
+}
+
+export interface MeshExport {
+  lines: number[];
+  edgeGroups: EdgeGroup[];
 }
 
 /**
@@ -365,10 +382,10 @@ export class Shape<Type extends TopoDS_Shape> extends WrappingObj<Type> {
    *
    * @category Shape Export
    */
-  meshEdges({ tolerance = 1e-3, angularTolerance = 0.1 } = {}): {
-    lines: number[];
-    edgeGroups: { start: number; count: number; edgeId: number }[];
-  } {
+  meshEdges({
+    tolerance = 1e-3,
+    angularTolerance = 0.1,
+  }: MeshExportOptions): MeshExport {
     const r = GCWithScope();
     const recordedEdges = new Set();
     const lines: number[] = [];
