@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "Node16",
     "target": "ES2022",
-    "outDir": "out",
+    "outDir": "dist",
     "lib": ["ES2022"],
     "sourceMap": true,
     "rootDir": "src",
@@ -13,5 +13,6 @@
     // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
     // "noUnusedParameters": true,  /* Report errors on unused parameters. */
   },
-  "exclude": ["node_modules", "out"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "src/webview", "src/test"]
 }

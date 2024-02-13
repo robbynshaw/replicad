@@ -45,7 +45,8 @@ type BlueprintLike =
 
 export class BuilderWorkerServiceFactory {
   public static create(
-    initOpenCascade: () => Promise<ReplicadOC.OpenCascadeInstance>
+    initOpenCascade: () => Promise<ReplicadOC.OpenCascadeInstance>,
+    fontUri: string = "/fonts/HKGrotesk-Regular.ttf"
   ) {
     const isBlueprintLike = (shape: replicad.AnyShape): boolean => {
       return (
@@ -162,8 +163,7 @@ return dp
       console.log("Building shapes from code...");
       const oc = await OC;
       replicad.setOC(oc);
-      if (!replicad.getFont())
-        await replicad.loadFont("/fonts/HKGrotesk-Regular.ttf");
+      if (!replicad.getFont()) await replicad.loadFont(fontUri);
 
       let shapes: ShapeInterface[];
       try {

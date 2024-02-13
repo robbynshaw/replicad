@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { EditorViewer } from "replicad-react";
-import "./App.css";
 import api from "./builder.worker";
 
 function App() {

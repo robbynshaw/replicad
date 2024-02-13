@@ -14,9 +14,9 @@
         "--extensionDevelopmentPath=${workspaceFolder}/packages/replicad-viewer-vscode"
       ],
       "outFiles": [
-        "${workspaceFolder}/packages/replicad-viewer-vscode/out/**/*.js"
-      ],
-      "preLaunchTask": "${defaultBuildTask}"
+        "${workspaceFolder}/packages/replicad-viewer-vscode/dist/**/*"
+      ]
+      // "preLaunchTask": "${defaultBuildTask}"
     }
   ]
 }
