@@ -1,17 +1,21 @@
 {
   "name": "replicad-viewer-vscode",
   "publisher": "replicad",
-  "displayName": "replicad-viewer-vscode",
+  "displayName": "Replicad Viewer",
   "description": "View replicad scripts in VSCode",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.86.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robbynshaw/replicad"
+  },
   "categories": [
     "Other"
   ],
   "activationEvents": [],
-  "main": "./dist/extension.js",
+  "main": "./dist/extension",
   "contributes": {
     "commands": [
       {
@@ -29,7 +33,8 @@
     "watch": "tsc -watch -p ./tsconfig.extension.json",
     "pretest": "pnpm run build && pnpm run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "vsce package --no-dependencies"
   },
   "dependencies": {
     "comlink": "^4.3.1",
@@ -52,6 +57,7 @@
     "@vitejs/plugin-react-swc": "^3.5.0",
     "@vscode/test-cli": "^0.0.4",
     "@vscode/test-electron": "^2.3.9",
+    "@vscode/vsce": "2.22.0",
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
