@@ -34,7 +34,7 @@
     "pretest": "pnpm run build && pnpm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
-    "package": "vsce package --no-dependencies"
+    "package": "vsce package --no-dependencies --pre-release"
   },
   "dependencies": {
     "comlink": "^4.3.1",
