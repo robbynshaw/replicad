@@ -1,11 +1,42 @@
+// import * as esbuild from "esbuild-wasm";
+// import esbuildWasm from "esbuild-wasm/esbuild.wasm?url";
+import * as esbuild from "esbuild";
 import { basename } from "node:path";
 import * as vscode from "vscode";
 
+const createBundle = async (fileName: string): Promise<string> => {
+  const result = await esbuild.build({
+    entryPoints: [fileName],
+    minify: true,
+    bundle: true,
+    packages: "external",
+    target: ["chrome58", "firefox57", "safari11", "edge16"],
+    // outfile: "out.js",
+    write: false,
+  });
+
+  const outFile = result.outputFiles[0];
+  // console.log("RESULT CONTENTS", outFile?.contents);
+  console.log("RESULT TEXT", outFile?.text);
+  return outFile?.text;
+};
+
 export function activate(context: vscode.ExtensionContext) {
   const extUri = context.extensionUri;
+
+  // let bundlerReady = false;
+  // esbuild
+  //   .initialize({
+  //     wasmURL: esbuildWasm,
+  //   })
+  //   .then(() => (bundlerReady = true))
+  //   .catch((err) => console.log("Bundler failed to initialize"));
+
   let disposable = vscode.commands.registerCommand(
     "replicad-viewer-vscode.renderReplicad",
     () => {
+      console.log("Replicad activated");
+
       const doc = vscode.window.activeTextEditor?.document;
       if (!doc) {
         vscode.window.showInformationMessage(
@@ -25,15 +56,21 @@ export function activate(context: vscode.ExtensionContext) {
         }
       );
 
-      const renderPanel = (txt?: string) => {
-        panel.webview.html = getWebViewContent(panel.webview, txt);
-      };
+      // const createBundle = async (txt?: string): string => {
+      // let result1 = await esbuild.transform(code, options);
+      // let result2 = esbuild.build(options);
+      // };
 
       vscode.workspace.onDidSaveTextDocument((e) => {
-        panel.webview.postMessage(e.getText());
+        console.log("FILE NAME", e.fileName);
+        createBundle(e.fileName)
+          .then((code) => {
+            panel.webview.postMessage(code);
+          })
+          .catch((err) => console.error("Error while building", err));
       });
 
-      renderPanel(doc?.getText());
+      panel.webview.html = getWebViewContent(panel.webview, doc?.getText());
     }
   );
 
